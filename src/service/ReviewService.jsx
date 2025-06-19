@@ -8,7 +8,15 @@ const getReviews = async (productId) => {
 };
 
 const createReview = async (newReview) => {
-  const response = await axios.post(apiReviewsUrl, newReview);
+  const productId = newReview.productId;
+
+  const requestBody = {
+    username: newReview.username,
+    body: newReview.body,
+    rating: newReview.rating,
+  };
+
+  const response = await axios.post(`${apiReviewsUrl}/${productId}`, requestBody);
   return response.data;
 };
 
