@@ -11,11 +11,8 @@ import AddCart from "../Cart/AddCart";
 
 function MonsterCard({monster}) {
  
-  const reviews = monster.reviews || [];
+  const averageRating = monster.rating || 0;
 
-  const averageRating = reviews.length
-    ? reviews.reduce((sum, review) => sum + review.rating, 0) / reviews.length
-    : 0;
   return (
     <Box
         key={monster.id}
@@ -80,7 +77,7 @@ function MonsterCard({monster}) {
         </Text>
         </HStack>
         <Text fontSize="md" fontWeight="bold">
-          ${monster.price}
+          ${monster.price.toFixed(2)}
         </Text>
         <AddCart/>
       </Box>
