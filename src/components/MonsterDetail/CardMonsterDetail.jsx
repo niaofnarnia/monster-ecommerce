@@ -12,13 +12,8 @@ import ButtonSocialMedia from "../ButtonSocialMedia/ButtonSocialMedia";
 import Cart from "../Cart/CartMonsterDetail";
 
 function CardMonsterDetail({monster}) {
-  // Supongamos que tienes un array de puntuaciones de usuarios
-  const reviews = monster.reviews || []; // Ejemplo: [{ rating: 4 }, { rating: 5 }, { rating: 3 }, { rating: 4 }, { rating: 5 }]
+  const averageRating = monster.rating || 0;
 
-  // Calcula la media de las puntuaciones
-  const averageRating = reviews.length
-    ? reviews.reduce((sum, review) => sum + review.rating, 0) / reviews.length
-    : 0;
 
   return (
     <Flex
@@ -68,7 +63,7 @@ function CardMonsterDetail({monster}) {
         {monster.description}
       </Text>
       <Text fontSize="2xl" fontWeight="bold" color="white">
-        ${monster.price}
+        ${monster.price.toFixed(2)}
       </Text>
       <Cart/>
      <ButtonSocialMedia/>
